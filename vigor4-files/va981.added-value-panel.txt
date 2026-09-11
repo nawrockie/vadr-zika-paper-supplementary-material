@@ -1,0 +1,130 @@
+ADDED-VALUE PANEL — VADR capabilities with NO VIGOR4 counterpart
+(981-seq ZIKV test set [848 0-N + 133 rescued-ambiguous, longest run <20nt];
+CURRENT released config: released VADR 1.7.1 + published vadr-models-zika-1.7.1-2
+package (--mkey zika --mdir <package>, --nosub --r_file --lowsim5ftr 15
+--lowsim3ftr 15) — supersedes the previous 848-sequence comparison, which used
+a stale pre-release config)
+
+MODEL-SCOPE NOTE (updated for the published package): the model is named
+"zika" in the published package (was "zikv-canonical" in the pre-release
+mdir-ere1.1 this panel originally used; same CM, renamed only). It classifies
+to a single protein-coding model with 16 features (1 gene, 1 CDS polyprotein,
+14 mat_peptides). Unlike the pre-release mdir, the published package's
+zika.minfo DOES declare a subgroup (derived from zika.stk), which turns on
+nearest-neighbor clade classification — every sequence now also carries a
+"sub grp"/"fract id" classification and, on 882/981 sequences here, the
+non-fatal INDEFINITE_CLASSIFICATION_NN (nnindfcl) alert (small margin between
+best and 2nd-best clade identity). This is new relative to the original
+981-seq comparison and does not affect pass/fail status anywhere below.
+(NOTE, unchanged: the .ftr file for this run DOES show extra ncRNA/stem_loop
+features beyond the 848-seq run's protein-only mdir — reflecting the current
+model package's added structural-RNA content vs. the OLD canonical-8seq-cm
+mdir used for va848 — but vadr-ftr-to-ftrsum.pl filters to CDS/mat_peptide
+only for the VIGOR4 comparison, so this doesn't change the feature-comparison
+scope. The published package's zika.minfo also redefines the ncRNA feature
+itself, from "Flavivirus 5' UTR (Rfam 14.10)" at 1..162 to "sfRNA1" at
+10395..10807 — again invisible to this CDS/mat_peptide-only comparison, but
+it is why one FAILing sequence below (KX198134.2) no longer carries indf5gap:
+that alert was firing on the old 5'-UTR ncRNA feature, which no longer exists
+in that form.)
+
+(A) FINER PROTEIN ANNOTATION (3 extra cleavage products vs VIGOR4): 981/981 each
+      capsid_protein_C
+      anchored_capsid_protein_C
+      membrane_glycoprotein_precursor_M
+    = 2943 VADR-only feature instances (was 2544 in the 848-seq comparison).
+    PLUS: VIGOR4 pseudogene-refusal on 5 of the 133 new sequences adds 60 more
+    VADR-only instances (see va981.disagreement-categories.txt item 5) that
+    are not a scope difference but a VIGOR4 tool limitation. Total
+    PRODUCT-MISSING-2 = 3003 (2943 + 60). Unchanged under the published
+    package (confirmed: va981.headline.txt reproduces PRODUCT-MISSING-2=3003
+    exactly).
+
+(B) GENBANK SUBMISSION-READINESS QC (VIGOR4 produces none of this):
+    Sequences classified: 981/981 to model zika
+    PASS: 960 / 981  (97.9%)
+    FAIL:  21 / 981  ( 2.1%)
+    (Unchanged under the published package: the 21 FAILing accessions are
+    byte-identical in membership to the pre-release-config run below.)
+
+    IMPORTANT CONTEXT — the 848-seq subset's OWN pass/fail numbers changed
+    under the current config vs. the stale one cited in the paper:
+      OLD stale-config (vadr-install-1.7, protein-only mdir, no --nosub/-r_file):
+        840/848 PASS (99.06%),  8/848 FAIL (0.94%)   [va848.added-value-panel.txt]
+      SAME 848 sequences, mdir-ere1.1 released config (mkey zikv-canonical,
+      --nosub --r_file --lowsim5ftr 15 --lowsim3ftr 15), extracted from this run:
+        837/848 PASS (98.7%),   11/848 FAIL (1.3%)
+    So part of the pass-rate drop from 99.8%(846/848 fully-concordant)-style
+    headline numbers to the new 981-seq numbers below reflects a genuinely
+    stricter/different current config on the SAME 848 sequences, not just
+    dilution by the harder 133 new sequences.
+
+    Alert taxonomy for the full 981-seq set (from the released-VADR-1.7.1 +
+    published-package full1254 run, filtered to the 981 accessions; "fatal" =
+    contributes to a FAIL verdict per VADR's .vadr.alc catalog):
+      code      fatal  per       cases  seqs  description
+      nnindfcl  no     sequence     882   882  INDEFINITE_CLASSIFICATION_NN (non-fatal; new under the published package's subgroup classification, see MODEL-SCOPE NOTE)
+      peptrans  yes    feature     210    15  PEPTIDE_TRANSLATION_PROBLEM (parent CDS problem)
+      fsthicfi  yes    feature      11     9  POSSIBLE_FRAMESHIFT_HIGH_CONF
+      indf3lcn  yes    feature       7     4  INDEFINITE_ANNOTATION_END (low-conf 3' boundary) [was 5 cases/4 seqs pre-release; same 4 seqs, 2 more feature instances]
+      lowsimic  no     feature       6     2  LOW_FEATURE_SIMILARITY (non-fatal)
+      ambgnt3f  no     feature       6     5  AMBIGUITY_AT_FEATURE_END (non-fatal) [was 5/5 pre-release]
+      cdsstopp  yes    feature       5     5  CDS_HAS_STOP_CODON (protein-based alignment)
+      cdsstopn  yes    feature       5     5  CDS_HAS_STOP_CODON (in-frame stop 5' of predicted)
+      dupregin  yes    sequence       4     4  DUPLICATE_REGIONS
+      extrant5  no     sequence       4     4  EXTRA_SEQUENCE_START (non-fatal)
+      indf5gap  yes    feature       3     3  INDEFINITE_ANNOTATION_START (gap at 5' boundary) [was 4/4 pre-release; KX198134.2 lost this alert, see MODEL-SCOPE NOTE]
+      extrant3  no     sequence       3     3  EXTRA_SEQUENCE_END (non-fatal)
+      ambgnt5f  no     feature       3     3  AMBIGUITY_AT_FEATURE_START (non-fatal)
+      lowsimin  yes    feature       2     1  LOW_FEATURE_SIMILARITY (internal, non-CDS) [was 1/1 pre-release; same seq]
+      discontn  yes    sequence       2     2  DISCONTINUOUS_SIMILARITY
+      lowsim3n  yes    feature       2     1  LOW_FEATURE_SIMILARITY_END [was 1/1 pre-release; same seq]
+      lowsim3l  yes    feature       2     1  LOW_FEATURE_SIMILARITY_END (long) [was 1/1 pre-release; same seq]
+      lowsim5n  yes    feature       1     1  LOW_FEATURE_SIMILARITY_START
+      indf5lcn  yes    feature       1     1  INDEFINITE_ANNOTATION_START (low-conf 5')
+      fstlocfi  no     feature       1     1  POSSIBLE_FRAMESHIFT_LOW_CONF (non-fatal)
+      deletinp  yes    feature       1     1  DELETION_OF_NT (protein-based alignment)
+      deletinn  no     feature       1     1  DELETION_OF_NT (nucleotide-based, non-fatal)
+
+    21 FAILing sequences (981-seq set; codes are per-seq alert codes,
+    * marks the 6 of these 21 that are among the 133 newly-added sequences;
+    nnindfcl included where present per the MODEL-SCOPE NOTE above):
+      AY632535.2   fsthicfi, indf5gap, peptrans           (frameshift; 848-set member, orig ZIKV isolate)
+      NC_012532.1  fsthicfi, indf5gap, peptrans            (frameshift; 848-set member, orig ZIKV RefSeq)
+      KX197205.1   dupregin, extrant3, lowsimin, nnindfcl  (848-set member)
+      KX198134.2   discontn, dupregin, extrant5, indf5lcn, nnindfcl  (848-set member; lost indf5gap under the published package, see MODEL-SCOPE NOTE)
+      KX830930.1   lowsim5n, nnindfcl                      (848-set member; NEW fail vs old config)
+      KX879603.1   extrant3, indf3lcn, nnindfcl            (848-set member; NEW fail vs old config)
+      KY766069.1   extrant3, indf3lcn, lowsim3l, nnindfcl  (848-set member)
+      OK569758.1   indf5gap                                (848-set member; NEW fail vs old config)
+      PQ129494.1   fsthicfi, nnindfcl, peptrans             (848-set member)
+      PQ129495.1   fsthicfi, nnindfcl, peptrans             (848-set member)
+      PQ203661.1   fsthicfi, nnindfcl, peptrans             (848-set member)
+    * EU545988.1   fsthicfi, indf3lcn, nnindfcl, peptrans    (133-new)
+    * KF383118.1   dupregin, fsthicfi, fstlocfi, lowsimic, peptrans   (133-new; no nnindfcl on this seq)
+    * MK028861.1   deletinn, deletinp, discontn, dupregin, indf3lcn, lowsim3n, lowsimic, nnindfcl, peptrans  (133-new)
+    * MW143017.1   cdsstopn, cdsstopp, nnindfcl, peptrans    (133-new; VIGOR4 also refuses this seq entirely)
+    * MW143018.1   cdsstopn, cdsstopp, nnindfcl, peptrans    (133-new; VIGOR4 also refuses this seq entirely)
+    * MW143019.1   cdsstopn, cdsstopp, nnindfcl, peptrans    (133-new; VIGOR4 also refuses this seq entirely)
+    * MW143020.1   cdsstopn, cdsstopp, nnindfcl, peptrans    (133-new; VIGOR4 also refuses this seq entirely)
+    * MW143021.1   cdsstopn, cdsstopp, nnindfcl, peptrans    (133-new; VIGOR4 also refuses this seq entirely)
+    * PV549934.1   fsthicfi, nnindfcl, peptrans              (133-new)
+    * PV549935.1   fsthicfi, nnindfcl, peptrans              (133-new)
+
+    (11 of the 21 fails are 848-set members — note 3 of those 11 [KX830930.1,
+    KX879603.1, OK569758.1] were NOT among the OLD config's 8 fails; they are
+    new fails introduced purely by the config change on already-included
+    sequences. 10 of the 21 fails are among the 133 newly added sequences —
+    123/133 = 92.5% of the new sequences PASS, consistent with the
+    expectation that most of the <20nt-run sequences would annotate
+    cleanly. This 21-accession set and every code above other than nnindfcl
+    and the ncRNA-driven indf5gap/indf3lcn/ambgnt3f/lowsim* count nudges noted
+    above is unchanged from the original mdir-ere1.1 comparison.)
+
+(C) VIGOR4 has NO classification step, NO pass/fail QC, NO alert system, and
+    (in this comparison) annotates a strict subset of VADR's protein
+    features on sequences it accepts — AND, newly observed in this expanded
+    981-seq comparison, VIGOR4 can decline to annotate a sequence AT ALL
+    when it contains an in-frame stop codon, since VIGOR4 does not support
+    pseudogene annotation (5/133 new sequences hit this). VADR still
+    produces full-coordinate annotation (flagged FAIL) for these sequences.

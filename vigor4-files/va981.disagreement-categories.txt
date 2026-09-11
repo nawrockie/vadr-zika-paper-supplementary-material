@@ -1,0 +1,67 @@
+DISAGREEMENT CATEGORIES — VADR vs VIGOR4, 981-seq ZIKV test set
+(supersedes the previous 848-sequence comparison, which used a
+stale VADR config — see va981.headline.txt for details)
+(arg1=VADR, arg2=VIGOR4 in compare-two-ftrsums.pl)
+
+Shared CDS/mat_peptide features (annotated by BOTH tools): 11712  (976 seqs x 12 products;
+  see item 5 below for why only 976 of 981 seqs have ANY shared features)
+  coords-MATCH:    11709  (99.97%)
+  coords-MISMATCH:     3  (0.03%)
+
+1. BOUNDARY-SHIFT (off by <=3 nt): 3 / 3 mismatches (100% of disagreements)
+   IDENTICAL to the 848-seq comparison — all 3 mismatches come from sequences
+   already in the 848 baseline; none of the 133 newly-added sequences
+   contribute any coords-mismatch.
+   KU744693.1  envelope_protein_E         VADR 976..2487   VIGOR 976..2484    dstop=3 (1 codon)
+   KU744693.1  nonstructural_protein_NS1  VADR 2488..3543  VIGOR 2485..3543   dstart=3 (1 codon)
+       -> the SAME E|NS1 junction in this one seq; tools place the mat_peptide
+          boundary one codon apart (complementary 3-nt shift).
+   MW915413.1  RNA-dependent_RNA_polymerase_NS5  VADR 7668..10330  VIGOR 7668..>10328  dstop=2
+       -> VIGOR marks a partial ('>') 3' end 2 nt short; VADR calls full stop.
+   All three are sub-codon nuances at adjacent-feature junctions / partial 3' ends.
+   No large-scale coordinate disagreements. No new mismatch types introduced
+   by expanding to 981 sequences.
+
+2. MISSING-OR-EXTRA FEATURE (VIGOR-only, PRODUCT-MISSING-1): 0
+   VIGOR4 annotated no CDS/mat_peptide that VADR did not also annotate.
+
+3. NAMING differences: 0 remaining (same synonym table as the 848-seq run:
+   small_envelope_protein_M -> membrane_glycoprotein_M; ',_C-terminal' /
+   ',_N-terminal' suffix stripping). No new naming collisions introduced by
+   the 133 additional sequences.
+
+4. SCOPE DIFFERENCE (VADR-only, systematic, PRODUCT-MISSING-2 core): 981 x 3 = 2943
+   DOMINANT VADR-only category (confirmed, same as 848-seq run). VADR
+   annotates 3 cleavage products that VIGOR4's zikv_db does not emit, for
+   every sequence with any VIGOR4 call at all:
+     capsid_protein_C                   (981/981)
+     anchored_capsid_protein_C          (981/981)
+     membrane_glycoprotein_precursor_M  (981/981)
+   These are genuine annotation-scope differences, NOT errors in either tool
+   (identical finding to the 848-seq comparison).
+
+5. NEW CATEGORY (not present in the 848-seq comparison) — VIGOR4 PSEUDOGENE
+   REFUSAL (VADR-only, additional, PRODUCT-MISSING-2 remainder): 5 x 12 = 60
+   5 of the 133 newly-added sequences (MW143017.1, MW143018.1, MW143019.1,
+   MW143020.1, MW143021.1) get ZERO VIGOR4 features at all — VIGOR4's log
+   states explicitly: "No gene models found. Currently Vigor4 does not
+   support annotating Pseudogenes" / "No gene models generated for sequence
+   <acc>". VADR, by contrast, still calls all 12 CDS/mat_peptide features for
+   these sequences (with FAIL-level alerts: cdsstopn/cdsstopp — in-frame stop
+   codons — plus the peptrans cascade), giving VADR full coordinate output
+   where VIGOR4 provides none.
+   Total: 4 core-scope products x 981 seqs would be 3924, but VIGOR4 only
+   attempts 976/981 seqs, so:
+     PRODUCT-MISSING-2 total = 2943 (item 4, all 981 seqs x 3 scope-only
+       products) + 60 (item 5, 5 seqs x 12 products VIGOR4 skipped
+       entirely) = 3003, matching va981.headline.txt exactly.
+   This is a genuine VIGOR4 tool limitation (declines to annotate CDSs with
+   internal in-frame stops as pseudogenes) rather than a VADR error — but
+   it is a real difference in annotation completeness that did not exist
+   in the 848-seq (0-ambiguous-nt) comparison, since none of those 848
+   sequences carried in-frame stop codons.
+
+6. START/STOP/FRAMESHIFT handling: no coords disagreements traced to this
+   among the 976 sequences with shared features. VADR's fails (21/981, see
+   va981.added-value-panel.txt) still produce coordinates that MATCH VIGOR's
+   where features are shared by both tools.

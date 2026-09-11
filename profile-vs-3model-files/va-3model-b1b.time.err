@@ -1,0 +1,23 @@
+	Command being timed: "perl <devvadr-worktree-root>/v-annotate.pl -r --nosub --lowsim5ftr 15 --lowsim3ftr 15 --mkey zikv-3model --mdir <mdir> <outdir-parent>/sample50.fa <outdir-parent>/va-3model-b1b"
+	User time (seconds): 395.27
+	System time (seconds): 2.73
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 6:39.48
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3827664
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1
+	Minor (reclaiming a frame) page faults: 592861
+	Voluntary context switches: 15596
+	Involuntary context switches: 1308
+	Swaps: 0
+	File system inputs: 15040
+	File system outputs: 33240
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

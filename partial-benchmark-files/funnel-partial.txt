@@ -1,0 +1,76 @@
+Partial-sequence extraction funnel
+Date of pull: 2026-05-04 (same release-date gate as the original >=10267nt master;
+  no re-fetch from NCBI was performed)
+Source files reused: zikv-comp-cl.fa (2477 seqs) / zikv-comp-cl.gb (GenBank flatfiles
+  for the 2477) / zikv-clean-2026-05-04.list (the existing 1262-seq >=10267nt master)
+
+Part A finding:
+  The VADR 2020 paper (Schaffer et al., BMC Bioinformatics 21:211) does NOT define a
+  universal minimum-length threshold for "partial" (EPN's recollected ">200nt" does not
+  appear anywhere in the paper). Instead, in "Obtaining norovirus and dengue virus
+  sequences" the paper derives a VIRUS-SPECIFIC empirical length threshold per taxon
+  from GenBank's own "complete genome" annotation label distribution (>7380nt for
+  norovirus, >10,371nt for dengue virus). This project's existing >=10267nt ZIKV cutoff
+  (95% of RefSeq NC_035889's 10808nt length) is methodologically the same kind of
+  per-virus empirical "complete genome" threshold, just derived via EB's original 2025
+  recipe rather than re-derived here. Operationalization used below: everything below
+  the existing 10267nt cutoff (after the same SYN/PAT division strip, munus the 8
+  current-CM training accessions, minus non-genuine PDB-structure "sequence" records)
+  is treated as the "partial sequence" pool. No additional universal length floor was
+  applied, consistent with the paper not using one.
+
+Stage                                                Records  Note
+---------------------------------------------------- -------  ----
+zikv-comp-cl.gb / .fa (UNVERIFIED+Patent stripped)       2477  same as existing funnel.txt
+After SYN+PAT division strip, ALL lengths                2298  (no $3>=10267 conjunct;
+                                                                 cf. 1262 WITH the conjunct)
+Shorter-sequence candidate pool                          1036  2298 minus the 1262 already
+  (2298 minus the existing 1262 >=10267 master)                in zikv-clean-2026-05-04.list
+                                                                (confirmed proper subset,
+                                                                comm -13 = 0 records)
+Minus PDB-structure "Chain" records (not genuine           10  5MFX_B, 5TPY_A, 7LYG_A,
+  GenBank sequence submissions -- crystal-structure                        7U4A_A, 8TQX_A,
+  RNA fragments, 9-142bp, DEFINITION lines read                            8TQX_D, 8TSV_A/B/C/D
+  "Chain X, ..."; non-standard accession.version format,                   (all division=VRL,
+  caught only because they don't match the                                 so they pass the
+  ^[A-Z]{1,2}[0-9]{5,8}\.[0-9]+$ accession pattern)                        SYN/PAT filter)
+Pool after PDB-chain exclusion                           1026
+Minus 8 current-CM training accessions                      0  confirmed zero overlap --
+                                                                all 8 are already inside the
+                                                                >=10267 master (grep -Ff
+                                                                against both the .list and
+                                                                the FASTA deflines: 0 hits)
+FINAL partial-sequence set                               1026  zikv-partial-2026-05-04.fa/.list
+
+esl-seqstat zikv-partial-2026-05-04.fa:
+  Format:              FASTA
+  Alphabet type:       DNA
+  Number of sequences: 1026
+  Total # residues:    2515756
+  Smallest:            71
+  Largest:             10265
+  Average length:      2452.0
+
+Length-bin breakdown (1026 total):
+  <200 nt:        120  (11.7%)
+  200-499 nt:     293  (28.6%)
+  500-999 nt:     251  (24.5%)
+  1000-1999 nt:   102  ( 9.9%)
+  2000-4999 nt:    56  ( 5.5%)
+  5000-10266 nt:  204  (19.9%)
+  >=10267 nt:       0  (by construction)
+
+8 current-CM training accessions (all confirmed EXCLUDED, all already inside the
+>=10267 master by construction, none in the partial pool):
+  KY989511.1, NC_035889.1, MG807646.1, KX377336.1, MW915411.1, MT377504.1,
+  MN611472.1, PQ551088.1
+
+Flagged issue found during derivation of this partial-sequence pool (out of
+scope of this pool itself):
+  at the time this funnel was run, a training-accessions list used elsewhere
+  for the full-length benchmark was found to be STALE -- it did not include
+  PQ551088.1, which has been a training sequence for the current 8-seq CM
+  since 2026-06-09. This partial-sequence pool correctly excludes all 8
+  current training accessions (see above). Note: PQ551088.1 does not appear
+  in the accession list backing the locked 1254-sequence benchmark shipped in
+  ../benchmark-1254-files/, confirming it is excluded there too.

@@ -1,0 +1,17 @@
+=== Headline concordance (981 sequences) ===
+PRODUCT-COORDS-MATCH   (both, coords agree): 11709
+PRODUCT-COORDS-MISMATCH(both, coords differ): 3
+PRODUCT-MISSING-2      (VADR-only)          : 3003
+PRODUCT-MISSING-1      (VIGOR-only)         : 0
+
+Shared features (both tools): 11712
+  coords-match rate among shared: 99.97% (11709/11712)
+
+Fully-concordant sequences (all shared features coords-match): 974/981 (99.3%)
+
+Distribution of #coords-mismatch features per sequence:
+  0 mismatches: 979 seqs
+  1 mismatches: 1 seqs
+  2 mismatches: 1 seqs
+
+Mismatch boundary offsets: 3 total; 3 are |Δstart|<=3 AND |Δstop|<=3 (off-by-a-few-nt)

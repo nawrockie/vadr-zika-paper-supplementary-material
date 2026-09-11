@@ -1,0 +1,15 @@
+# shared_features=31000 match=30987 mismatch=13 identity_rate=0.9996 profile_only=0 lib3_only=0
+#seq	ftrtype	ftrname	profile_coords	lib3_coords
+KU179098.2	stem_loop	stem_loop.8	10588..10659	10588..10658
+KX198134.2	stem_loop	stem_loop.1	318..385	324..385
+KX879603.1	stem_loop	stem_loop.10	10725..10810	10725..10807
+KX879603.1	ncRNA	sfRNA1	10395..10810	10395..10807
+KY766069.1	stem_loop	stem_loop.8	10606..10676	10606..10677
+KY766069.1	stem_loop	stem_loop.10	10715..10791	10715..10796
+KY766069.1	ncRNA	sfRNA1	10385..10791	10385..10796
+MF352141.1	stem_loop	stem_loop.1	2..70	4..70
+MH055376.1	stem_loop	stem_loop.10	10725..10808	10725..10807
+MH055376.1	ncRNA	sfRNA1	10395..10808	10395..10807
+MK028861.1	stem_loop	stem_loop.5	10300..10361	10300..10370
+MW165882.1	stem_loop	stem_loop.5	10356..10370	10357..10370
+MW165882.1	ncRNA	sfRNA1	10356..10370	10357..10370

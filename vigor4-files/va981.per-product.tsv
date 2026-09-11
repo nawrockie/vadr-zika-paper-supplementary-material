@@ -1,0 +1,16 @@
+product	n_vadr	n_vigor	n_both	n_coords_match	n_coords_mismatch	n_vadr_only	n_vigor_only	pct_match_of_both
+RNA-dependent_RNA_polymerase_NS5	981	976	976	975	1	5	0	99.9
+anchored_capsid_protein_C	981	0	0	0	0	981	0	nan
+capsid_protein_C	981	0	0	0	0	981	0	nan
+envelope_protein_E	981	976	976	975	1	5	0	99.9
+membrane_glycoprotein_M	981	976	976	976	0	5	0	100.0
+membrane_glycoprotein_precursor_M	981	0	0	0	0	981	0	nan
+nonstructural_protein_NS1	981	976	976	975	1	5	0	99.9
+nonstructural_protein_NS2A	981	976	976	976	0	5	0	100.0
+nonstructural_protein_NS2B	981	976	976	976	0	5	0	100.0
+nonstructural_protein_NS3	981	976	976	976	0	5	0	100.0
+nonstructural_protein_NS4A	981	976	976	976	0	5	0	100.0
+nonstructural_protein_NS4B	981	976	976	976	0	5	0	100.0
+polyprotein	981	976	976	976	0	5	0	100.0
+protein_2K	981	976	976	976	0	5	0	100.0
+protein_pr	981	976	976	976	0	5	0	100.0

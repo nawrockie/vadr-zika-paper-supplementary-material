@@ -1,0 +1,28 @@
+#     alert     causes   short                               per    num   num  long       
+#idx  code      failure  description                        type  cases  seqs  description
+#---  --------  -------  -----------------------------  --------  -----  ----  -----------
+1     fstlocfi  no       POSSIBLE_FRAMESHIFT_LOW_CONF    feature      2     2  low confidence possible frameshift in CDS (frame restored before end)
+2     indf3lcc  no       INDEFINITE_ANNOTATION_END       feature      2     1  alignment to homology model has low confidence at 3' boundary for feature that is or matches a CDS
+3     deletinn  no       DELETION_OF_NT                  feature      5     2  too large of a deletion in nucleotide-based alignment of CDS feature
+4     lowsim3c  no       LOW_FEATURE_SIMILARITY_END      feature      3     1  region overlapping annotated feature that is or matches a CDS at 3' end of sequence lacks significant similarity
+5     lowsimic  no       LOW_FEATURE_SIMILARITY          feature     13     3  region overlapping annotated feature that is or matches a CDS lacks significant similarity
+6     ambgnt5f  no       AMBIGUITY_AT_FEATURE_START      feature    441   144  first nucleotide of non-CDS feature is an ambiguous nucleotide
+7     ambgnt3f  no       AMBIGUITY_AT_FEATURE_END        feature    496   143  final nucleotide of non-CDS feature is an ambiguous nucleotide
+8     ambgnt3c  no       AMBIGUITY_AT_CDS_END            feature      4     4  final nucleotide of CDS is an ambiguous nucleotide
+9     nnindfcl  no       INDEFINITE_CLASSIFICATION_NN   sequence   1005  1005  low difference between fractional identity of sequence and its nearest neighbor (NN) and sequence and its 2nd NN
+10    nnloidcl  no       LOW_ID_CLASSIFICATION_NN       sequence     18    18  low fractional identity of sequence and its nearest neighbor model sequence
+#---  --------  -------  -----------------------------  --------  -----  ----  -----------
+11    lowcovrg  yes      LOW_COVERAGE                   sequence      4     4  low sequence fraction with significant similarity to homology model
+12    cdsstopn  yes      CDS_HAS_STOP_CODON              feature      1     1  in-frame stop codon exists 5' of stop position predicted by homology to reference
+13    cdsstopp  yes      CDS_HAS_STOP_CODON              feature      2     2  stop codon in protein-based alignment
+14    fsthicft  yes      POSSIBLE_FRAMESHIFT_HIGH_CONF   feature      1     1  high confidence possible frameshift in CDS (frame not restored before end)
+15    fsthicfi  yes      POSSIBLE_FRAMESHIFT_HIGH_CONF   feature      5     3  high confidence possible frameshift in CDS (frame restored before end)
+16    peptrans  yes      PEPTIDE_TRANSLATION_PROBLEM     feature     50     8  mat_peptide may not be translated because its parent CDS has a problem
+17    indf5gap  yes      INDEFINITE_ANNOTATION_START     feature      1     1  alignment to homology model is a gap at 5' boundary
+18    indf5lcn  yes      INDEFINITE_ANNOTATION_START     feature      2     2  alignment to homology model has low confidence at 5' boundary for feature that does not match a CDS
+19    indf5pst  yes      INDEFINITE_ANNOTATION_START     feature      2     2  protein-based alignment does not extend close enough to nucleotide-based alignment 5' endpoint
+20    indf3gap  yes      INDEFINITE_ANNOTATION_END       feature      2     1  alignment to homology model is a gap at 3' boundary
+21    indf3pst  yes      INDEFINITE_ANNOTATION_END       feature      5     5  protein-based alignment does not extend close enough to nucleotide-based alignment 3' endpoint
+22    deletinp  yes      DELETION_OF_NT                  feature      2     1  too large of a deletion in protein-based alignment
+23    lowsimil  yes      LOW_FEATURE_SIMILARITY          feature      3     1  long region overlapping annotated feature that does not match a CDS lacks significant similarity
+#---  --------  -------  -----------------------------  --------  -----  ----  -----------

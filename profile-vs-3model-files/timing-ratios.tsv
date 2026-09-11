@@ -1,0 +1,12 @@
+# per-replicate profile-vs-3model timing ratio, computed from the 12 va-*.time.err GNU time -v files in this directory
+# ratio = 3model_user_time_sec / profile_user_time_sec  (>1 means 3-model library used MORE CPU time, i.e. profile model faster)
+# block  3model_user_sec  profile_user_sec  ratio
+b1a	394.37	374.41	1.0533
+b1b	395.27	373.75	1.0576
+b2a	394.36	371.6	1.0612
+b2b	394.51	374.27	1.0541
+b3a	394.96	372.68	1.0598
+b3b	391.75	370.98	1.0560
+#
+# n=6  median_ratio=1.0568  min=1.0533  max=1.0612
+# i.e. the 3-model library used a median of 5.7% more User CPU time than the single profile model

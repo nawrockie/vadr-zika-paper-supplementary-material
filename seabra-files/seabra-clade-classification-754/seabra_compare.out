@@ -1,0 +1,23 @@
+Loaded 754 our assignments, 759 Seabra labels
+Overlap: 754 seqs
+
+============================================================
+CONFUSION MATRIX (rows=our, cols=Seabra)
+============================================================
+our|seabra         african       asian    american   row_total
+african                  7           0           0           7
+asian                    0         101           0         101
+american                 0           0         646         646
+col_total                7         101         646         754
+
+Overall agreement: 754/754 = 100.00%
+
+Per-clade (Seabra column -> our recall = TP / Seabra_total):
+  african   : TP=   7 / Seabra_total=   7 = recall 100.00%
+  asian     : TP= 101 / Seabra_total= 101 = recall 100.00%
+  american  : TP= 646 / Seabra_total= 646 = recall 100.00%
+
+In our assignments but not in any Seabra list (0):
+
+Disagreements (0):
+seq_id	our	seabra	nearest_train	identity_pct
