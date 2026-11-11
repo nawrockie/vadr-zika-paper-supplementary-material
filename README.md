@@ -25,14 +25,14 @@ tar xf <tarball.gz>
 ```
 
 VADR is on github:
-https://github.com/ncbi/vadr
+https://github.com/NLM-DIR/vadr
 
 The Zika models are on bitbucket and on the VADR FTP site:
 https://bitbucket.org/nawrockie/vadr-models-zika
 https://ftp.ncbi.nlm.nih.gov/pub/nawrocki/vadr-models/zika/
 
 Instructions for annotating Zika sequences with VADR:
-https://github.com/ncbi/vadr/wiki/Zika-virus-annotation
+https://github.com/NLM-DIR/vadr/wiki/Zika-virus-annotation
 
 A snapshot of that page, taken 2026-11-11, is included here as
 `vadr-wiki-Zika-virus-annotation.md`, so that the instructions cited by the
