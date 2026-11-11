@@ -34,5 +34,11 @@ https://ftp.ncbi.nlm.nih.gov/pub/nawrocki/vadr-models/zika/
 Instructions for annotating Zika sequences with VADR:
 https://github.com/ncbi/vadr/wiki/Zika-virus-annotation
 
+A snapshot of that page, taken 2026-11-11, is included here as
+`vadr-wiki-Zika-virus-annotation.md`, so that the instructions cited by the
+paper are preserved in the archived version of this repository. It is a loose
+file, not part of either tarball above. The live page linked above may be
+newer and is the one to use.
+
 ---
 Questions/problems? email eric.nawrocki@nih.gov
